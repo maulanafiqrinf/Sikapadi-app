@@ -29,9 +29,9 @@
             <span class="menu-header-text" data-i18n="Apps & Pages">Apps &amp; Pages</span>
         </li>
         <li class="menu-item">
-            <a href="app-email.html" class="menu-link">
+            <a href="{{ url('blog') }}" class="menu-link">
                 <i class="menu-icon tf-icons ri-mail-open-line"></i>
-                <div data-i18n="Email">Email</div>
+                <div data-i18n="Blog">Blog</div>
             </a>
         </li>
     </ul>

@@ -6,19 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\Status;
 
-class Blog extends Model
+class Testimoni extends Model
 {
     use HasFactory;
 
     protected $fillable =[
         'title',
         'content',
-        'image',
         'status',
     ];
 
     protected $casts = [
         'status' => Status::class,
     ];
-
 }
