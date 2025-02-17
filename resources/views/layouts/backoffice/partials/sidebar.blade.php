@@ -40,5 +40,11 @@
                 <div data-i18n="Testimoni">Testimoni</div>
             </a>
         </li>
+        <li class="menu-item">
+            <a href="{{ url('client') }}" class="menu-link">
+                <i class="menu-icon tf-icons ri-mail-open-line"></i>
+                <div>Klien</div>
+            </a>
+        </li>
     </ul>
 </aside>

@@ -23,7 +23,7 @@ class BlogController extends Controller
             'title' => 'Tambah Blog',
         ];
 
-        return view('backoffice.blog.create');
+        return view('backoffice.blog.create', $paramsData);
     }
 
     // public function store(Request $request): JsonResponse {

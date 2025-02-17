@@ -24,8 +24,8 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-medium d-block small">John Doe</span>
-                                    <small class="text-muted">Admin</small>
+                                    <span class="fw-medium d-block small">{{ Auth::user()->name }}</span>
+                                    <small class="text-muted">{{ Auth::user()->email }}</small>
                                 </div>
                             </div>
                         </a>
@@ -34,7 +34,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="pages-profile-user.html">
+                        <a class="dropdown-item" href="{{ route('profile.edit') }}">
                             <i class="ri-user-3-line ri-22px me-3"></i><span class="align-middle">My
                                 Profile</span>
                         </a>
@@ -45,33 +45,16 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="pages-account-settings-billing.html">
-                            <span class="d-flex align-items-center align-middle">
-                                <i class="flex-shrink-0 ri-file-text-line ri-22px me-3"></i>
-                                <span class="flex-grow-1 align-middle">Billing</span>
-                                <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger">4</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="pages-pricing.html">
-                            <i class="ri-money-dollar-circle-line ri-22px me-3"></i><span
-                                class="align-middle">Pricing</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="pages-faq.html">
-                            <i class="ri-question-line ri-22px me-3"></i><span class="align-middle">FAQ</span>
-                        </a>
-                    </li>
-                    <li>
                         <div class="d-grid px-4 pt-2 pb-1">
-                            <a class="btn btn-sm btn-danger d-flex" href="auth-login-cover.html" target="_blank">
+                            <a class="btn btn-sm btn-danger d-flex" href="{{ route('logout') }}" id="logout-button">
                                 <small class="align-middle">Logout</small>
                                 <i class="ri-logout-box-r-line ms-2 ri-16px"></i>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </a>
                         </div>
                     </li>
@@ -80,3 +63,30 @@
         </ul>
     </div>
 </nav>
+<!-- SweetAlert2 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.getElementById('logout-button').addEventListener('click', function (e) {
+        e.preventDefault(); // Mencegah tindakan default (logout langsung)
+
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            text: "Anda akan keluar dari sistem!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Logout!',
+            cancelButtonText: 'Tidak'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Jika pengguna mengklik "Ya", submit form logout
+                document.getElementById('logout-form').submit();
+            }
+        });
+    });
+</script>
